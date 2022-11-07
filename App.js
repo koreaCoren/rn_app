@@ -3,6 +3,7 @@ import { Platform, View, StatusBar, BackHandler, Alert } from 'react-native';
 import { WebView } from "react-native-webview";
 
 export default function App() {
+
     const webViewRef = useRef();
     let count = 0;
     BackHandler.addEventListener('hardwareBackPress', () => {
@@ -33,13 +34,15 @@ export default function App() {
         alert(e.nativeEvent.data);
     };
     return Platform.OS === "web" ? (
-        <iframe src="http://192.168.0.14:3000/" height={'100%'} width={'100%'} style={{ border: "none" }} />
+        // <iframe src="http://192.168.0.14:3000/" height={'100%'} width={'100%'} style={{ border: "none" }} />
+        <iframe src="http://13.209.87.250/index.html" height={'100%'} width={'100%'} style={{ border: "none" }} />
     ) : (
         <View style={{ flex: 1 }}>
             <StatusBar backgroundColor={"#503aff"} />
             <WebView
                 ref={webViewRef}
-                source={{ uri: "http://192.168.0.14:3000/" }}
+                source={{ uri: "http://13.209.87.250/index.html" }}
+            // source={{ uri: "http://192.168.0.14:3000/" }}
             />
         </View>
     )
